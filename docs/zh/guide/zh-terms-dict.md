@@ -6,3 +6,4 @@
 演出脚本 | Script | 剧本/脚本 | 对应 Nainovel Script，便于同 Unity 自身的 C# `脚本` 做出区分。
 Nani脚本 | Naninovel Script | Nani剧本 | 对应 Nainovel Script，用于游戏演出制作时的脚本文件。
 文本输出窗 | Text Printer | 文本打字机 | 用于输出游戏中对话、台词的UI窗体。
+演出元素 | Actor | 演员 | Naninovel中立绘、背景、文本打字机都被抽象为了一个 “演员”。
