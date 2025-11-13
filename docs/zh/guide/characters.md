@@ -299,7 +299,7 @@ https://github.com/elringus/sprite-dicing.git?path=/plugins/unity/Assets/SpriteD
 
 ![](https://www.youtube.com/watch?v=6PdOAOsnhio)
 
-上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1jUC4B2EUG/。
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1jUC4B2EUG/)。
 
 关于更多切割选项与使用示例，请参考扩展文档：https://dicing.elringus.com/guide/unity。
 
