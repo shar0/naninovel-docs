@@ -799,8 +799,6 @@ rewind 12
 
 调试窗口在编辑器与构建版本（运行时）中均可使用。
 
----
-
 ## 文本标识
 
 某些功能（如 [脚本本地化](/zh/guide/localization#scripts-localization) 和 [自动语音](/zh/guide/voicing#auto-voicing)）需要将 Naninovel 演出脚本中的文本与其他资源（如翻译文本或语音文件）进行关联。例如：在显示文本时播放对应语音，或在多语言版本中显示翻译后的文本。要实现这种关联，必须为每段文本分配一个唯一标识符（ID）。

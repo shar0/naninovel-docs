@@ -581,8 +581,6 @@ Spine 的 [Skeleton Render Separator](https://github.com/pharan/spine-unity-docs
 
 ![](https://i.gyazo.com/f1ee43da312b29f3236cf772d9ea9fa7.png)
 
----
-
 ## 渲染到纹理
 
 除通用角色外，所有角色与背景实现都可以渲染到一个纹理资源中，该纹理可被用于自定义 UI、输出窗、材质或其他兼容的纹理输入源。
