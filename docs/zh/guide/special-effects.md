@@ -212,7 +212,7 @@ Fade-out time | Decimal | 3 | 粒子系统将在指定秒数内逐渐将光线�
 模拟景深（又称 DOF、虚化）效果，使焦点对象保持清晰，而其他区域产生模糊。专用指令：[@bokeh]
 
 ::: tip
-如果你只想模糊单个对象（演员），请考虑使用 [模糊效果](/zh/guide/special-effects#blur)。
+如果你只想模糊单个对象（演出元素），请考虑使用 [模糊效果](/zh/guide/special-effects#blur)。
 :::
 
 ![](https://i.gyazo.com/616a023c46f207b4a3a33d3d3fd9fbc9.mp4)
@@ -254,7 +254,7 @@ Stop Duration | Decimal | 1 | 效果淡出的持续时间，用于让参数回�
 
 ## 模糊 Blur
 
-为支持的演员应用模糊滤镜：背景和角色（包括精灵、分层、切片、Live2D、Spine、视频及场景实现）。默认情况下（当未指定第一个参数时），效果将应用于 `MainBackground` 演员。专用指令：[@blur]
+为支持的演出元素应用模糊滤镜：背景和角色（包括精灵、分层、切片、Live2D、Spine、视频及场景实现）。默认情况下（当未指定第一个参数时），效果将应用于 `MainBackground` 演出元素。专用指令：[@blur]
 
 ![](https://i.gyazo.com/067614d77783683e74ca79652099b58d.mp4)
 
@@ -262,7 +262,7 @@ Stop Duration | Decimal | 1 | 效果淡出的持续时间，用于让参数回�
 
 名称 | 类型 | 默认值 | 描述
 --- | --- | --- | ---
-Actor ID | String | MainBackground | 要应用模糊效果的演员 ID。演员必须实现 `IBlurable` 接口才能支持该效果。
+Actor ID | String | MainBackground | 要应用模糊效果的演出元素 ID。演出元素必须实现 `IBlurable` 接口才能支持该效果。
 Intensity | Decimal | 0.5 | 效果强度，范围为 0.0 到 1.0。
 Duration | Decimal | 1 | 插值时间（以秒为单位），即强度达到目标值的速度。
 

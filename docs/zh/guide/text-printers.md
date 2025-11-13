@@ -236,6 +236,8 @@ Lorem <ruby="VERY"><tip="TipID">ipsum</tip></ruby> dolor sit amet.
 
 ![](https://www.youtube.com/watch?v=aWdq7YxIxkE)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV14bC4B8EVw/)。
+
 ## 从右到左文本
 
 所有内置输出窗均支持从右到左（RTL）文本的显现效果。

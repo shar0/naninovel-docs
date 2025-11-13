@@ -45,9 +45,11 @@
 
 ![](https://www.youtube.com/watch?v=2YP-36THHvk)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1WYC4BoE6y/)。
+
 要将外观资源与演出元素记录关联，请使用 [可寻址资源系统](/zh/guide/resource-providers#addressable)。例如，要将 “Beach” 外观与 “MainBackground” 背景关联，请将纹理资源地址设为 `Naninovel/Backgrounds/MainBackground/Beach`，并添加 `Naninovel` 标签。有关使用可寻址资源提供程序的详细信息，请参阅 [资源提供程序文档](/zh/guide/resource-providers#addressable)。
 
-## Z 轴顺序（Z-order）
+## Z 轴顺序
 
 当同时显示多个背景时，它们往往会互相遮挡：
 
@@ -56,126 +58,126 @@
 @back id:2
 ```
 
-— in case both background `1` and `2` are full-screen opaque textures, one added later will completely cover the other. To show first one back, either hide the other or change z-position (depth) to chane the draw order:
+— 当背景 `1` 和 `2` 都是全屏不透明纹理时，后添加的会完全覆盖前一个。若想再次显示第一个，可以隐藏另一个或改变其 z 轴位置（深度）以调整绘制顺序：
 
 ```nani
-; Hide background 2 to reveal first one back
+; 隐藏背景 2 来重新显示第一个背景
 @back id:2 !visible
-; There is also a dedicated command to hide actors
+; 也可以使用专用指令来隐藏演出元素
 @hide 2
 
-; Alternatively, change z-position
+; 或者，改变 z 轴位置
 @back id:1 pos:,,98
 @back id:2 pos:,,99
 ```
 
-Higher z-positions result in further distance from the camera, hence first actor being placed closer to the camera will render on top of the other.
+较高的 z 轴位置表示距离摄像机更远，因此第一个演出元素若被放置在更靠近摄像机的位置，将会渲染在其他对象之上。
 
-Backgrounds are placed with a specific z-offset by default to make them appear behind other actor types. The offset value can be changed via `Z Offset` property in background settings.
+默认情况下，背景会以特定的 z 偏移量放置，以使其显示在其他演出元素类型之后。可以通过背景设置中的 `Z Offset` 属性来更改该偏移值。
 
-To prevent z-fighting issues, backgrounds are further offset apart from each other over z-axis when first added (shown). The offset is controlled with `Z Step` setting.
+为了防止 z-fighting 问题，背景在首次添加（显示）时会沿 z 轴进一步分层偏移。该偏移由 `Z Step` 设置控制。
 
-## Match Mode
+## 匹配模式
 
-When [camera](https://docs.unity3d.com/Manual/class-Camera.html) is rendering in orthographic mode and `Match Mode` in background actor configuration is not disabled, the actor will attempt to match its size against current screen size. This is performed to handle the cases when display [aspect ratio](https://en.wikipedia.org/wiki/Aspect_ratio_(image)) is different from the background's. When the matching is disabled and the aspect ratios are different, "black bars" will appear.
+当 [摄像机](https://docs.unity3d.com/Manual/class-Camera.html) 以正交模式渲染且背景演出元素配置中的 `Match Mode` 未被禁用时，演出元素将尝试根据当前屏幕尺寸自动调整自身大小。这用于处理显示 [宽高比](https://en.wikipedia.org/wiki/Aspect_ratio_(image)) 与背景图像不同的情况。如果关闭匹配功能且宽高比不一致，将出现“黑边”。
 
 ![](https://i.gyazo.com/46619a08e3b91441cf30800185932963.png)
 
-While for standalone (PC, Mac, Linux) builds you can limit the available aspect ratios in the [player settings](https://docs.unity3d.com/Manual/class-PlayerSettingsStandalone.html#Resolution), on web, consoles and mobiles it's not possible and the applications have to adapt for the target devices instead.
+对于独立版（PC、Mac、Linux）构建，可以在 [Player Settings](https://docs.unity3d.com/Manual/class-PlayerSettingsStandalone.html#Resolution) 中限制可用的宽高比；但在网页、主机和移动平台上则无法做到，应用程序必须根据目标设备进行适配。
 
-Following match modes can be set for each background actor (except of generic implementation):
+以下匹配模式可为每个背景演出元素设置（通用实现除外）：
 
- Mode    | Description
- ---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Crop    | The background will always occupy the whole camera frustum, ensuring no black bars are visible to the player, no matter the display aspect ratio; however, some background areas could be cropped. Set by default for new background actors.
- Fit     | The whole background area will always remain visible, but black bars will appear when the aspect ratios are different.
- Custom  | Allows matching either width or height with a custom ratio. The ratio is controlled with `Custom Match Ratio` property: minimum (0) value will match width and ignore height, maximum (1) — vice-versa.
- Disable | Don't perform any matching.
+| 模式    | 描述 |
+|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Crop    | 背景将始终占据整个相机视锥，无论显示器纵横比如何，都不会出现黑边；但背景的部分区域可能被裁剪。此模式为新建背景演出元素的默认设置。 |
+| Fit     | 背景区域将始终完全可见，但当纵横比不同时时会出现黑边。 |
+| Custom  | 允许使用自定义比例匹配宽度或高度。该比例由 `Custom Match Ratio` 控制：最小值（0）匹配宽度忽略高度，最大值（1）则相反。 |
+| Disable | 不进行任何匹配。 |
 
 ::: tip
-In case you wish to implement a similar matching feature for a generic or custom background see the [scale to screen example](https://discord.com/channels/545676116871086080/1369983634236379240) on the forum.
+如果你想为通用或自定义背景实现类似的匹配功能，可参考论坛上的[按屏幕缩放示例](https://discord.com/channels/545676116871086080/1369983634236379240)。
 :::
 
-## Poses
+## 姿势
 
-Each background has `Poses` property allowing to specify named states (poses).
+每个背景都有 `Poses` 属性，用于指定具名状态（姿势）。
 
-Pose name can be used as appearance in [@back] command to apply all the selected parameters specified in the pose at once, instead of specifying them individually via the command parameters.
+姿势名称可作为外观在 [@back] 指令中使用，一次性应用姿势中选定的所有参数，而无需在指令参数中逐个指定。
 
 ```nani
-; Given `Day` pose is defined for main background,
-; applies all the selected parameters specified in the pose.
+; 当主背景定义了 `Day` 姿势时，  
+; 会应用该姿势中指定的所有参数。
 @back Day
 
-; Same as above, but for a background actor with `City` ID
-; and using `DropFade` transition over 3 seconds.
+; 与上述相同，但作用于 ID 为 `City` 的背景演出元素，  
+; 并使用 `DropFade` 过渡，持续 3 秒。
 @back Day id:City transition:DropFade time:3
 ```
 
-Notice, that when a pose is used as appearance, you can still override individual parameters, eg:
+注意，当姿势作为外观使用时，你仍然可以覆写单独的参数，例如：
 
 ```nani
-; Given `Day` pose is defined for main background,
-; applies all the parameters specified in the pose state,
-; except tint, which is overridden in the command.
+; 当主背景定义了 `Day` 姿势时，  
+; 会应用姿势中指定的所有参数，  
+; 但 `tint` 会被指令中的参数覆盖。
 @back Day tint:#ff45cb
 ```
 
-## Placeholder Backgrounds
+## 占位背景
 
-The placeholder implementation is the default one and is intended for scenario drafting when you do not yet have any visual assets to represent a background. It procedurally generates background appearances at runtime so you can keep track of which one is currently displayed while working on the scenario. Below is an example of a placeholder "EveningScene" background with a couple of [placeholder characters](/zh/guide/characters#placeholder-characters) on top.
+占位实现是默认背景实现，用于在你还没有任何用于表示背景的视觉资源时进行剧情草稿编写。它会在运行时程序化生成背景外观，让你在编写剧情时能清楚知道当前显示的是哪个背景。下面是一个占位背景 “EveningScene” 的示例，并叠加了几个[占位角色](/zh/guide/characters#placeholder-characters)。
 
 ![](https://i.gyazo.com/cebb0506d3743e2e1b20b1d3c214239a.png)
 
-While Naninovel automatically generates background placeholders, you can define the looks for specific appearances via the `Placeholder Appearances` list in the background editor.
+虽然 Naninovel 会自动生成背景占位图，你仍然可以在背景编辑器的 `Placeholder Appearances` 列表中为特定外观自定义样式。
 
 ![](https://i.gyazo.com/183dcc86fbf0d01de49d85d45686571f.png)
 
-## Sprite Backgrounds
+## 精灵背景
 
-Sprite implementation of the background actors is the most common and simple one; it uses a set of [texture](https://docs.unity3d.com/Manual/Textures.html) assets wrapped over a quad mesh (sprite) to represent appearances of the background. The textures can be based on `.jpg`, `.png`, `.tiff`, `.psd` or any other image file format [supported by Unity](https://docs.unity3d.com/Manual/ImportingTextures).
-
-::: tip
-Choose file formats that are most comfortable for your development workflow. When building the project, Unity will automatically convert all the source resources (textures, audio, video, etc) to the formats most suitable for the target platform, so it won't make difference in which format you originally store the resources in the project. Find more information on how Unity manage project assets in the [official documentation](https://docs.unity3d.com/Manual/AssetWorkflow).
-:::
-
-Initial (unscaled) size of the sprite background mesh on scene depends on the reference resolution (camera configuration), background's `Pixel Per Unit` property (set for each background actor in the configuration menu) and source texture resolution.
-
-Naninovel will attempt to make the backgrounds cover the whole camera frustum by default, so make sure to size the source textures so that the aspect ratio is equal to the reference resolution; see [match mode guide](/zh/guide/backgrounds#match-mode) for more information on how to change or disable this behaviour.
+背景演出元素的 Sprite 实现是最常见且最简单的方式；它使用一组包裹在四边形网格（sprite）上的[纹理](https://docs.unity3d.com/Manual/Textures.html)资源来表示背景外观。纹理可以基于 `.jpg`、`.png`、`.tiff`、`.psd` 或 Unity [支持的任意图像格式](https://docs.unity3d.com/Manual/ImportingTextures)。
 
 ::: tip
-Define reference resolution with your team before starting the work on the art assets (both characters and backgrounds). This way the artists will be able to author the assets with the correct dimensions and you won't have to edit them later.
+选择最适合你工作流程的文件格式即可。在构建游戏时，Unity 会自动将资源（纹理、音频、视频等）转换为目标平台最合适的格式，因此项目中使用何种格式存储原始资源并不会影响最终效果。详见 Unity 官方的[资产工作流文档](https://docs.unity3d.com/Manual/AssetWorkflow)。
 :::
 
-## Diced Sprite Backgrounds
+Sprite 背景在场景中的初始（未缩放）大小取决于参考分辨率（摄像机配置）、背景的 `Pixels Per Unit` 属性（为每个背景分别设置）以及源纹理的分辨率。
 
-Built with an open source [SpriteDicing](https://github.com/elringus/SpriteDicing) package, `DicedSpriteBackground` implementation allows to significantly reduce build size and texture memory by reusing texture areas of the background sprites when the associated textures contain mostly similar data.
+Naninovel 默认会尝试让背景覆盖整个摄像机视锥，因此请确保源纹理的宽高比与参考分辨率一致；更多信息可参考[匹配模式指南](/zh/guide/backgrounds#match-mode)。
 
-Diced background is very similar to diced character implementation; see the [diced characters guide](/zh/guide/characters.html#diced-sprite-characters) for the setup and usage instructions.
+::: tip
+在开始制作美术资源（角色和背景）前，与团队明确参考分辨率。这样美术成员就能按照正确的尺寸制作资源，你也无需在后期修正它们。
+:::
 
-## Video Backgrounds
+## 切片精灵背景
 
-Video backgrounds use looped [video clip](https://docs.unity3d.com/Manual/class-VideoClip) assets to represent the appearance.
+基于开源的 [SpriteDicing](https://github.com/elringus/SpriteDicing) 包构建，`DicedSpriteBackground` 实现允许在背景纹理包含大量相似区域时，通过复用纹理块，大幅减少构建体积与显存占用。
 
-For the supported video formats for each platform see [Unity docs for video sources](https://docs.unity3d.com/Manual/VideoSources-FileCompatibility.html). When using video with an alpha channel (transparency), see the [guide on the supported formats](https://docs.unity3d.com/Manual/VideoTransparency.html).
+切片背景的工作方式与切片角色实现几乎完全相同；设置与使用方法请参见[切片角色指南](/zh/guide/characters.html#diced-sprite-characters)。
+
+## 视频背景
+
+视频背景使用循环播放的 [VideoClip](https://docs.unity3d.com/Manual/class-VideoClip) 资源作为该背景外观。
+
+各平台支持的视频格式请参考 Unity 的[视频源兼容性文档](https://docs.unity3d.com/Manual/VideoSources-FileCompatibility.html)。若使用带 α 通道（透明度）的视频，请参考 Unity 关于[透明视频支持格式的说明](https://docs.unity3d.com/Manual/VideoTransparency.html)。
 
 ::: info NOTE
-When `Transcode` is disabled in the video asset import settings, the clip may not be playable on some platforms. When a video is not playing in the build, try enabling the transcode option and rebuild the player.
+当在视频资源导入设置中关闭 `Transcode` 时，该视频可能在某些平台无法播放。如果构建后的游戏中视频无法播放，请尝试开启转码选项后重新构建。
 
 ![](https://i.gyazo.com/9c3fb59dc8ebb2fbd0f5a5e79542e11f.png)
 :::
 
 ::: tip EXAMPLE
-In case having issues with achieving a seamless loop, make sure the video has exactly same starting and finishing frames and a compatible encoding setup; check our [video actor sample](/zh/guide/samples#video-actor) for the reference.
+如果你在实现无缝循环时遇到问题，请确保视频的首帧和末帧完全一致，并使用兼容的编码设置；可参考我们的[视频演出元素示例](/zh/guide/samples#video-actor)。
 :::
 
-To prevent specific appearance from looping, append `NoLoop` (case-insensitive) to the appearance name.
+若希望某个外观不进行循环播放，可在外观名称后追加 `NoLoop`（大小写不敏感）。
 
-### WebGL Limitations
+### WebGL 限制
 
-On WebGL Unity's video player can only work in streaming mode, so all the video resources will be copied to `Assets/StreamingAssets/Backgrounds` folder upon building the WebGL player. **StreamingAssets** folder will also appear in the build output directory; make sure to preserve it when publishing the build and check that your web server allows reading the data from this folder.
+在 WebGL 平台上，Unity 的视频播放器只能以 **Streaming 模式**工作，因此所有视频资源在构建 WebGL 版本时都会被复制到 `Assets/StreamingAssets/Backgrounds` 文件夹中。**StreamingAssets** 文件夹也会出现在构建输出目录中；发布部署时必须保留该文件夹，并确保你的 Web 服务器允许读取其中的数据。
 
-The copied video files won't be transcoded by Unity (even if the option is enabled), so the source files should initially be in a format supported by the web browsers; alternatively, you can replace the clip files in the game directory after the build. Below is the detailed metadata of a background video clip that is used in our WebGL demo:
+被复制的视频文件不会被 Unity 转码（即使开启了转码选项也不会生效），因此源视频文件必须**本身就是浏览器可播放的格式**；或者你也可以在构建后手动替换游戏目录中的视频。下面是我们 WebGL Demo 使用的视频背景文件的详细元数据示例：
 
 ~~~
 Container : MPEG-4
@@ -202,90 +204,90 @@ Writing library : x264 core 148 r2795 aaa9aa8
 Encoding settings : cabac=1 / ref=3 / deblock=1:0:0 / analyse=0x3:0x113 / me=hex / subme=7 / psy=1 / psy_rd=1.00:0.00 / mixed_ref=1 / me_range=16 / chroma_me=1 / trellis=1 / 8x8dct=1 / cqm=0 / deadzone=21,11 / fast_pskip=1 / chroma_qp_offset=-2 / threads=12 / lookahead_threads=2 / sliced_threads=0 / nr=0 / decimate=1 / interlaced=0 / bluray_compat=0 / constrained_intra=0 / bframes=3 / b_pyramid=2 / b_adapt=1 / b_bias=0 / direct=1 / weightb=1 / open_gop=0 / weightp=2 / keyint=250 / keyint_min=25 / scenecut=40 / intra_refresh=0 / rc_lookahead=40 / rc=crf / mbtree=1 / crf=23.0 / qcomp=0.60 / qpmin=0 / qpmax=69 / qpstep=4 / ip_ratio=1.40 / aq=1:1.00
 ~~~
 
-If you're using a video format other than mp4 (eg, webm), set the extension of the hosted files via `Video Stream Extension` property in the resource provider configuration.
+如果你使用的格式不是 mp4（例如 webm），请在资源提供器配置中通过 `Video Stream Extension` 属性设置所托管文件的扩展名。
 
 ![](https://i.gyazo.com/b3eb1ab2af513e6a131347d6e5e455e5.png)
 
-## Layered Backgrounds
+## 分层背景
 
-The layered implementation allows composing backgrounds from multiple sprites (layers) and then toggle them individually via naninovel scripts at runtime.
+分层背景实现允许你将多个精灵（图层）组合成一个背景，并在运行时通过 naninovel 脚本单独开关每个图层。
 
 ::: tip
-Layered actor implementation has been evolving and is currently the most flexible with support for all the rendering features (in contrast to generic). Even if you don't want to use layer expressions, but instead control the appearance with Unity's Animator or other custom systems; or need to render non-trivial objects such as particle systems and/or utilize third-party renderers, check [render only](/zh/guide/characters#outsourcing-appearance-management) and [camera rendering](/zh/guide/characters#camera-rendering) options available for layered actors before reserving to generic or custom implementation.
+分层演出元素（Layered Actor）实现目前是最灵活的：支持所有渲染特性（相比 Generic 实现更加全面）。即使你不想使用图层表达式，而是希望通过 Unity Animator 或自定义系统控制外观；或需要渲染粒子系统、第三方渲染器等复杂对象，也请优先考虑分层演出元素中的 **Render Only** 和 **Camera Rendering** 模式，只有在不满足需求时再选择 Generic 或自定义实现。
 :::
 
-To create a layered background prefab, use `Create -> Naninovel -> Background -> Layered` asset context menu. Enter [prefab editing mode](https://docs.unity3d.com/Manual/EditingInPrefabMode.html) to compose the layers. Several layers and groups will be created by default. You can use them or delete and add your own.
+要创建一个分层背景 prefab，使用 `Create -> Naninovel -> Background -> Layered` 菜单。进入 [Prefab 编辑模式](https://docs.unity3d.com/Manual/EditingInPrefabMode.html) 后即可组合图层。默认会创建若干层和组，你可以自由使用或删除、添加其他结构。
 
-The layered backgrounds are very similar to [layered characters](/zh/guide/characters#layered-characters); consult the documentation for more info on how to set up and control them via naninovel scripts.
+分层背景与[分层角色](/zh/guide/characters#layered-characters)的逻辑几乎相同；请参考角色文档了解设置方式以及如何在 naninovel 脚本中控制它们。
 
-Don't forget that nameless parameter in [@back] command is expecting appearance and transition type (not ID and appearance as with [@char] command), so specify layer composition expressions in the following way:
+请注意：[@back] 指令中的无名参数表示的是**外观（appearance）+ 过渡类型（transition）**，而不是像 [@char] 那样的“ID + appearance”。因此在使用图层组合表达式时，应按如下方式编写：
 
 ```nani
-; Given "LayeredForest" background actor
+; 给定名为 "LayeredForest" 的背景演出元素
 @back Group>Layer,Other/Group+Layer,-RootLayer.TransitionType id:LayeredForest
 ```
 
-## Generic Backgrounds
+## 通用背景
 
-Generic background is the most flexible background actor implementation. It's based on a prefab with a `Generic Background Behaviour` component attached to the root object. Appearance changes and all the other background parameters are routed as [Unity events](https://docs.unity3d.com/Manual/UnityEvents.html) allowing to implement the behavior of the underlying object in any way you wish.
+通用背景是最灵活的背景演出元素实现方式。它基于一个预制体，并在根对象上挂载了 `Generic Background Behaviour` 组件。外观切换以及其它所有背景参数都会被转发为 [Unity Events](https://docs.unity3d.com/Manual/UnityEvents.html)，允许你以任意方式实现底层对象的具体行为。
 
 ![](https://i.gyazo.com/6483ef3e84549c1bbfbdffc6556308ea.png)
 
 ::: info NOTE
-Generic actor implementations just route events from the scenario scripts and it's up to user to implement the underlying behaviour, eg how the actor should react to the appearance or visibility change commands, whether and how it will adapt to aspect ratio changes, etc. Don't expect most of the actor-related features to work automatically with the generic implementations.
+通用演出元素实现只负责把场景脚本中的事件往外转发，至于底层对象应该如何响应外观变化、可见性变化、如何适配屏幕比例变化等，全都由你自行实现。不要期待大部分内置背景特性会自动适配通用实现。
 :::
 
-To create generic background prefab from a template, use `Create -> Naninovel -> Background -> Generic` context asset menu.
+要基于模板创建通用背景预制体，使用 `Create -> Naninovel -> Background -> Generic` 上下文菜单。
 
-Generic backgrounds are very similar to generic characters; check out a tutorial video on setting an animated 3D model as a generic character for one of the possible usage examples. Be aware, that the video is captured with an old Naninovel version and some properties and component names are different now; see the above docs for the up-to-date information.
+通用背景与通用角色非常相似；你可以参考教程视频（将一个带动画的 3D 模型设置为通用角色）来了解可能的使用方式。注意，该视频使用的是旧版本 Naninovel，其中部分属性和组件名称已变更；请参照上文文档获取最新信息。
 
 ![](https://www.youtube.com/watch?v=HPxhR0I1u2Q)
 
 ::: tip
-Unity's `Animator` component could fail to register `SetTrigger` when the game object is enabled/disabled in the same frame; in case you use `GameObject.SetActive` to handle visibility changes (as it's shown in the above tutorial), consider enabling/disabling the child objects with renderers instead.
+Unity 的 `Animator` 组件在物体启用/禁用发生在同一帧时，可能无法成功响应 `SetTrigger`。如果你像视频示例中那样使用 `GameObject.SetActive` 控制可见性，建议改为仅启用/禁用具有渲染器的子对象。
 :::
 
 ::: tip EXAMPLE
-Check [generic actor sample](/zh/guide/samples#generic-actor), where generic background implementation is used to host animated sprites.
+参考 [通用演出元素示例](/zh/guide/samples#generic-actor)，其中演示了如何使用通用背景实现承载动画精灵的背景。
 :::
 
-## Scene Backgrounds
+## 场景背景
 
-You can use a [Unity scene](https://docs.unity3d.com/Manual/CreatingScenes) as a background with scene backgrounds implementation.
+你可以使用一个 [Unity 场景](https://docs.unity3d.com/Manual/CreatingScenes) 作为背景，通过 Scene Backgrounds 实现方式来呈现。
 
-The scene background configuration has a `Scene Root Path` option set to `Assets/Scenes` by default — this is the directory, where the actor's scene assets are expected to be located. You can change it (for example to specify individual folder for each actor) or leave as-is.
+场景背景的配置中有一个 `Scene Root Path` 选项，默认值为 `Assets/Scenes` —— 也就是期望放置该背景演出元素场景资源的目录。你可以修改它（例如为每个演出元素指定独立的文件夹），也可以保持默认。
 
 ![](https://i.gyazo.com/0f3c0be40941ad739f2c873c5fbf6e51.png)
 
 ::: info NOTE
-Resource (appearance) names of the scene backgrounds are expected to be equal to the paths of the scene assets relative to the root; for example, if the scene root is `Assets/Scenes` and you have `Assets/Scenes/Sphere.unity` and `Assets/Scenes/Sub/Cylinder.unity` scene assets, the associated appearances would be `Sphere` and `Sub/Cylinder` respectively.
+场景背景的资源（外观）名称必须等于场景文件相对该根目录的路径。例如，如果场景根目录为 `Assets/Scenes`，且你有 `Assets/Scenes/Sphere.unity` 和 `Assets/Scenes/Sub/Cylinder.unity`，那么它们对应的外观名称应为 `Sphere` 与 `Sub/Cylinder`。
 :::
 
-Create a new (or move an existing) scene under the specified root folder and make sure it has at least one [camera](https://docs.unity3d.com/ScriptReference/Camera.html) component attached to a root game object inside the scene. Upon loading scene background, Naninovel will assign a render texture to the first found camera in the scene. The render texture will then be assigned to a background sprite, representing the scene background inside Naninovel scene space. This way, the scene background will be able to co-exist with other background and character actors, support all the background transition effects and scale to handle various display aspect ratios.
+在指定的根目录下创建一个新场景（或移动现有场景），并确保场景中至少有一个挂在根对象上的 [Camera](https://docs.unity3d.com/ScriptReference/Camera.html) 组件。当加载场景背景时，Naninovel 会将一个 RenderTexture 分配给场景中找到的第一个摄像机。随后，该 RenderTexture 会被映射到一个背景精灵上，用于在 Naninovel 的场景空间中显示场景背景。这样场景背景便能与其它背景和角色演出元素共存，支持所有背景过渡效果，并根据屏幕比例自动缩放。
 
-Make sure to position the scene objects in world space so that they don't overlap with objects from other scenes, that could potentially be loaded at the same time (eg, when referenced in a single naninovel script). Additionally, be aware, that in case a scene background object is positioned near the global space origin (`x0 y0 z0`), it could be rendered by Naninovel's main camera; to prevent this, either offset all the scene objects from the global origin, or use `Configuration -> Engine -> Override Objects Layer` to isolate Naninovel-related objects using [layers](https://docs.unity3d.com/Manual/Layers.html).
+确保在世界空间中摆放场景中的物体，使其不会与其他可能被同时加载的场景内容重叠（例如同一 naninovel 脚本中引用多个场景背景时）。另外注意，如果场景背景中的对象靠近全局原点（`x0 y0 z0`），它们可能会被 Naninovel 的主摄像机渲染；为避免此情况，你可以将所有场景物体整体偏移，或者在 `Configuration -> Engine -> Override Objects Layer` 中配置使用 Unity 的 [层（Layer）](https://docs.unity3d.com/Manual/Layers.html) 将 Naninovel 相关物体隔离。
 
-After scene setup is complete, create a new background actor via `Naninovel -> Configuration -> Backgrounds` menu, select `SceneBackground` implementation and add the scene asset to the actor resources.
+场景设置完成后，通过 `Naninovel -> Configuration -> Backgrounds` 创建一个新的背景演出元素，选择 `SceneBackground` 实现，并将场景资源添加到该演出元素的资源列表中。
 
-When assigning resources for a scene background actor, corresponding scene assets should automatically be added to the [build settings](https://docs.unity3d.com/Manual/BuildSettings.html); in case you're getting an error that a scene asset is not added to the build, try adding it manually.
+当为 Scene Background 分配资源时，关联的场景会自动加入 [Build Settings](https://docs.unity3d.com/Manual/BuildSettings.html)。如果出现提示说场景未加入构建，请手动将其加入。
 
-You can now use [@back] command to control the created scene background actor, eg:
+现在你就可以使用 [@back] 指令控制该场景背景演出元素，例如：
 
 ```nani
-; Show "Scene" background actor with content from "Sphere" Unity scene.
+; 显示 "Scene" 背景演出元素，内容来自 "Sphere" Unity 场景。
 @back Sphere id:Scene
-; Transition the actor to "Sub/Cylinder" with "RandomCircleReveal" effect.
+; 使用 "RandomCircleReveal" 特效，将该演出元素切换到 "Sub/Cylinder"。
 @back Sub/Cylinder.RandomCircleReveal id:Scene
 ```
 
 ::: tip
-When composing backgrounds with Unity scenes, consider adding [custom commands](/zh/guide/custom-commands) to control scene state (eg, modify light color to change time of day or move camera to change the view) instead of creating multiple scenes for each appearance. This way you won't have to track objects position to prevent overlap when multiple scenes are loaded.
+在使用 Unity 场景组合背景时，建议编写一些 [自定义指令](/zh/guide/custom-commands) 来控制场景状态（例如修改灯光颜色以改变昼夜、移动相机以改变视角），而不是为每种外观都创建一个独立场景。这样在同时加载多个场景时，你就不必再到处追踪物体的位置以避免相互重叠。
 :::
 
 ::: tip EXAMPLE
-Find example on setting up scene background in the [scene background sample](/zh/guide/samples#scene-background).
+关于如何设置场景背景的示例，请参考 [场景背景示例](/zh/guide/samples#scene-background)。
 :::
 
-## Render to Texture
+## 渲染到纹理
 
-It's possible to render character and background actors of all the implementations (except generic) to a texture asset, which can then can be assigned to a custom UI, printer, material or any other compatible source. Setting up background actor render to texture is very similar to that of a character; [check the guide](/zh/guide/characters#render-to-texture) for more info and examples.
+可以将所有实现类型的角色与背景演出元素（**除了通用以外**）渲染到一个纹理（Texture）资源中，然后将该纹理应用到自定义 UI、文本输出窗、材质或任何其它支持纹理输入的对象上。背景演出元素的渲染到纹理设置方式与角色的几乎相同；详细步骤和示例请参考这里的指南：[角色渲染到纹理](/zh/guide/characters#render-to-texture)。

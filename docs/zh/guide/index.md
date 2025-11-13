@@ -4,6 +4,8 @@ Naninovel 是一个用于 [Unity 游戏引擎](https://unity3d.com) 的扩展插
 
 ![](https://www.youtube.com/watch?v=lRxIKDU9z4k)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1HusPzFEkP/)。
+
 ::: info 提示
 虽然 Naninovel 并不限制你使用 Unity 能实现的功能，但某些内置特性在运行时需要满足特定条件（支持的 Unity 版本、项目配置、目标平台等）。请参阅 [兼容性页面](/zh/guide/compatibility) 以获取更多信息。
 :::

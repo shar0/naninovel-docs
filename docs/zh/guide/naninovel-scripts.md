@@ -716,6 +716,8 @@ The bomb is defused!
 
 ![](https://www.youtube.com/watch?v=9UmccF9R9xI)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV14bC4B8E3s/)。
+
 ## 脚本图
 
 当你在项目中使用大量脚本或编写非线性剧情时，拥有一个故事流程的可视化表示会非常有帮助。这时就可以使用脚本图工具。

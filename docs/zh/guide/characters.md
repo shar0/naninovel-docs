@@ -31,7 +31,9 @@
 
 ![](https://www.youtube.com/watch?v=2YP-36THHvk)
 
-要将外观资源与演出元素记录关联，可使用 [可寻址资源系统（Addressable）](/zh/guide/resource-providers#addressable)。例如，要将名为 “Happy” 的外观与角色 “Kohaku” 关联，请将对应纹理资源地址设为 `Naninovel/Characters/Kohaku/Happy`，并添加 `Naninovel` 标签。有关可寻址资源提供程序的更多信息，请参阅 [资源提供者文档](/zh/guide/resource-providers#addressable)。
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1WYC4BoE6y/)。
+
+要将外观资源与演出元素记录关联，可使用 [可寻址资源系统](/zh/guide/resource-providers#addressable)。例如，要将名为 “Happy” 的外观与角色 “Kohaku” 关联，请将对应纹理资源地址设为 `Naninovel/Characters/Kohaku/Happy`，并添加 `Naninovel` 标签。有关可寻址资源提供程序的更多信息，请参阅 [资源提供者文档](/zh/guide/resource-providers#addressable)。
 
 ## 姿势
 
@@ -207,6 +209,8 @@ Char1: My display name is now bound to `name` custom variable.
 
 ![](https://www.youtube.com/watch?v=gobowgagdyE)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV11aC4BtEP2/)。
+
 ## 唇形同步
 
 ### 事件驱动
@@ -214,6 +218,8 @@ Char1: My display name is now bound to `name` custom variable.
 可动画化的角色实现（如通用型、分层型、Live2D 等）提供了 `On Started Speaking` 与 `On Finished Speaking` 两个 Unity 事件。当角色成为或停止成为打印消息的作者时（更准确地说，是当消息完全显示时），这些事件会被触发，从而允许你执行自定义逻辑，例如启动或停止角色的嘴部动画。
 
 ![](https://www.youtube.com/watch?v=fx_YS2ZQGHI)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1NaC4BbE6g/)。
 
 当启用了 [自动语音](/zh/guide/voicing#auto-voicing) 功能时，这些事件将由语音配音驱动；否则，它们将由打印文本消息驱动。在后一种情况下，你可能希望手动屏蔽部分事件（例如防止在打印标点符号时触发嘴部动画）；可使用 [@lipSync] 指令来实现。
 
@@ -292,6 +298,8 @@ https://github.com/elringus/sprite-dicing.git?path=/plugins/unity/Assets/SpriteD
 下方视频教程演示了如何创建并配置切割精灵图集、如何基于该图集添加新的切割角色，以及如何通过 Naninovel 脚本控制该角色。
 
 ![](https://www.youtube.com/watch?v=6PdOAOsnhio)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1jUC4B2EUG/。
 
 关于更多切割选项与使用示例，请参考扩展文档：https://dicing.elringus.com/guide/unity。
 
