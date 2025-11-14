@@ -454,6 +454,8 @@
 
 ![](https://www.youtube.com/watch?v=HZjey6M2-PE)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV18DCuBHE6o/)。
+
 ### 自定义着色器
 
 你可以通过自定义演出元素 [Shader](https://docs.unity3d.com/Manual/ShadersOverview.html) 来添加全新的过渡效果。

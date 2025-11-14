@@ -58,6 +58,8 @@ UI 自定义功能允许你添加自定义界面，或修改、完全替换任�
 
 ![](https://www.youtube.com/watch?v=wrAm-cwPXy4)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1DUCuBXEDQ/)。
+
 ::: tip 示例
 上方视频教程所示的 Unity 项目可在 [UI 示例](/zh/guide/samples#ui) 中找到。其中还包括以下示例：带滚动与网页链接的制作人员名单界面、带粒子特效的选项按钮、在文本输出窗中使用表情符号、在聊天输出窗中添加时间戳等。
 :::
@@ -140,6 +142,8 @@ Font Sizes | 实际应用于文本组件的字体大小。列表中各项对应�
 下方视频教程演示了如何覆盖内置的标题（主）菜单，并展示如何使用标题脚本在进入主菜单时添加背景与特效，全程无需编写任何 C# 代码。
 
 ![](https://www.youtube.com/watch?v=hqhfhXzQkdk)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV18UCuBXEvH/)。
 
 ::: tip 示例
 上方视频教程所示的 Unity 项目可在 [UI 示例](/zh/guide/samples#ui) 中找到。

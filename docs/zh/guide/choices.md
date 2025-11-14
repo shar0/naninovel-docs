@@ -42,6 +42,8 @@ goto:#Epilogue
 
 ![](https://www.youtube.com/watch?v=cOREgtJak3A)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1hUCuBXEaz/)。
+
 ## 嵌套回调
 
 当选项的后果较轻（例如仅需输出几句话）时，为其单独设置标签并使用 `goto` 或 `gosub` 参数会显得不便。此时可以使用 [嵌套指令](/zh/guide/naninovel-scripts#nesting)，在选项被选择后直接执行嵌套块中的指令：

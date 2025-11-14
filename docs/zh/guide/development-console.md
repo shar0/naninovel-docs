@@ -38,3 +38,5 @@ reload | 对当前正在播放的场景脚本执行 [热重载](/zh/guide/nanino
 — 将使用默认输出窗输出 `VariableName` 的值。
 
 ![](https://www.youtube.com/watch?v=wcgTGro0_SE)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1t9CuBJExf/)。

@@ -31,7 +31,7 @@
 
 ![](https://www.youtube.com/watch?v=2YP-36THHvk)
 
-上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1WYC4BoE6y/)。
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1SDCuBHEHW/)。
 
 要将外观资源与演出元素记录关联，可使用 [可寻址资源系统](/zh/guide/resource-providers#addressable)。例如，要将名为 “Happy” 的外观与角色 “Kohaku” 关联，请将对应纹理资源地址设为 `Naninovel/Characters/Kohaku/Happy`，并添加 `Naninovel` 标签。有关可寻址资源提供程序的更多信息，请参阅 [资源提供者文档](/zh/guide/resource-providers#addressable)。
 
@@ -390,6 +390,8 @@ https://github.com/elringus/sprite-dicing.git?path=/plugins/unity/Assets/SpriteD
 
 ![](https://www.youtube.com/watch?v=Bl3kXrg8tiI)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1VpCgB8EZA/)。
+
 ::: info 注意
 视频中出现的 `@char Miho.Shoes>` 指令实际上会选择 “Shoes” 分组（并禁用其相邻分组），而不是隐藏它。若要隐藏分组，应使用指令 `@char Miho.Shoes-`。
 :::
@@ -473,6 +475,8 @@ Unity 共提供 32 个图层，其中 8 个供引擎内部使用。剩余图层�
 
 ![](https://www.youtube.com/watch?v=HPxhR0I1u2Q)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV15pCgB8EpF/)。
+
 ::: tip
 当游戏对象在同一帧内被启用 / 禁用时，Unity 的 `Animator` 组件可能无法正确注册 `SetTrigger`。如果你在控制可见性时使用了 `GameObject.SetActive`（如视频中所示），建议改为启用 / 禁用带渲染器的子对象。
 :::
@@ -537,6 +541,8 @@ Live2D 角色实现依赖于 [Live2D Cubism](https://www.live2d.com) 这款二�
 
 ![](https://www.youtube.com/watch?v=rw_Z69z0pAg)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV18DCuBHEZP/)。
+
 ::: tip 示例
 请参见 [Live2D 示例](/zh/guide/samples#live2d)，该示例展示了如何在 Naninovel 中使用 Live2D 角色。
 :::
@@ -600,6 +606,8 @@ Spine 的 [Skeleton Render Separator](https://github.com/pharan/spine-unity-docs
 下方视频演示了如何将 Live2D 角色渲染到纹理中，并将该纹理绑定到自定义文本输出窗上。该输出窗与角色相互关联，因此当打印与角色相关的文本时，角色会自动随输出窗一起显隐。
 
 ![](https://www.youtube.com/watch?v=81OTbSAnWbw)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV18DCuBHE2E/)。
 
 除通用角色外，其他所有角色与背景类型均可按照 Live2D 的方式进行纹理渲染配置。
 

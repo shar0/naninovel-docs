@@ -382,3 +382,5 @@ Stop Duration | Decimal | 1 | 效果淡出的持续时间（以秒为单位）�
 可查看以下视频了解如何为摄像机添加自定义滤镜特效的示例：
 
 ![](https://www.youtube.com/watch?v=IbT6MTecO-k)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV18DCuBHEqF/)。

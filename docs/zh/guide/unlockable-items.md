@@ -41,6 +41,8 @@ CG 图鉴功能允许定义可在游戏中解锁的图片资源，并可在主�
 
 ![](https://www.youtube.com/watch?v=wkZeszk6gm0)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1gUCuB9Eaw/)。
+
 默认情况下，在 [可解锁资源管理器](/zh/guide/unlockable-items#unlockable-resources) 中添加的带 `CG` 前缀的纹理资源，以及具有相同前缀的主背景（`MainBackground`）也会被视为可解锁 CG 项。
 
 若要将背景添加为 CG，只需在背景路径前加 `CG`：
@@ -86,6 +88,8 @@ CG 槽位在 UI 网格中按路径名排序（从左到右，从上到下）。�
 该系统可用于构建游戏内词汇表、百科全书或成就追踪系统。
 
 ![](https://www.youtube.com/watch?v=CRZuS1u_J4c)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1t9CuBJEbF/)。
 
 ::: info 注意
 上方视频展示的是“内联格式”的管理文本文档，而现代版本的 Naninovel 默认使用“多行格式”。下文将介绍当前默认格式及如何切换回内联格式。

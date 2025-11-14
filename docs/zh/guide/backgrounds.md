@@ -39,13 +39,15 @@
 
 ![](https://www.youtube.com/watch?v=X2iyGSCpnJs)
 
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1U9CuBJESi/)。
+
 ## 演出元素记录
 
 如果你拥有大量背景或外观，通过编辑器菜单逐一分配会比较麻烦，可以使用演出元素记录资源（`Create -> Naninovel -> Actor Record -> Background`）。演出元素记录支持多选编辑，并可通过文件夹组织。下方视频展示了一个示例：
 
 ![](https://www.youtube.com/watch?v=2YP-36THHvk)
 
-上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1WYC4BoE6y/)。
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV1SDCuBHEHW/)。
 
 要将外观资源与演出元素记录关联，请使用 [可寻址资源系统](/zh/guide/resource-providers#addressable)。例如，要将 “Beach” 外观与 “MainBackground” 背景关联，请将纹理资源地址设为 `Naninovel/Backgrounds/MainBackground/Beach`，并添加 `Naninovel` 标签。有关使用可寻址资源提供程序的详细信息，请参阅 [资源提供程序文档](/zh/guide/resource-providers#addressable)。
 
@@ -242,6 +244,8 @@ Encoding settings : cabac=1 / ref=3 / deblock=1:0:0 / analyse=0x3:0x113 / me=hex
 通用背景与通用角色非常相似；你可以参考教程视频（将一个带动画的 3D 模型设置为通用角色）来了解可能的使用方式。注意，该视频使用的是旧版本 Naninovel，其中部分属性和组件名称已变更；请参照上文文档获取最新信息。
 
 ![](https://www.youtube.com/watch?v=HPxhR0I1u2Q)
+
+上哔哩哔哩观看 👉 [转载版视频](https://www.bilibili.com/video/BV15pCgB8EpF/)。
 
 ::: tip
 Unity 的 `Animator` 组件在物体启用/禁用发生在同一帧时，可能无法成功响应 `SetTrigger`。如果你像视频示例中那样使用 `GameObject.SetActive` 控制可见性，建议改为仅启用/禁用具有渲染器的子对象。
